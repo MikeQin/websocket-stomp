@@ -12,14 +12,14 @@ http://localhost:8080
 
 For modern JavaScript, e.g. sockjs, use:
 ```
-ws://localhost:8080/stomp
+ws://localhost:8080/chatbot
 ```
 
 For native JavaScript library for WebSocket
 (e.g. Simple WebSocket Test Client - Chrome extension), use:
 
 ```
-ws://localhost:8080/stomp/websocket
+ws://localhost:8080/chatbot/websocket
 ```
 
 Thank you!

@@ -13,14 +13,19 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('/stomp');
+    var socket = new SockJS('/chatbot'); // stomp endpoint
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
+
         stompClient.subscribe('/topic/answers', function (answer) {
-            console.log('answer:', JSON.parse(answer.body).body);
-            showAnswer(JSON.parse(answer.body).body.content);
+            console.log('/topic/answer:', JSON.parse(answer.body).content);
+            showAnswer(JSON.parse(answer.body).content);
+        });
+
+        stompClient.subscribe('/topic/audit', function (audit) {
+            console.log('/topic/audit:', audit.body);
         });
     });
 }
