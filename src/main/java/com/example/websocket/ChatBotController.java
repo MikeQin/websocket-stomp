@@ -8,6 +8,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
@@ -67,5 +68,15 @@ public class ChatBotController {
 
       return answer;
     });
+  }
+
+  @SubscribeMapping("/server-time")
+  public String getServerTime() {
+
+    String time = "[**] server.time: " + LocalTime.now().format(PATTERN);
+    log.info("[time] {}", time);
+
+    return time;
+
   }
 }
