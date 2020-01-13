@@ -14,6 +14,7 @@ function setConnected(connected) {
 
 function connect() {
     var socket = new SockJS('/chatbot'); // stomp endpoint
+
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
